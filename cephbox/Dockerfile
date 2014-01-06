@@ -47,6 +47,19 @@ ADD ./ceph.conf.sh /ceph.conf.sh
 
 CMD /bootstrap.sh
 
+# Volumes
+# dd if=/dev/zero of=/tmp/ceph0 bs=1024000 count=3000
+# mkfs.ext4 /tmp/ceph0
+# mkdir /tmp/ceph0d
+# sudo mount -o loop /tmp/ceph0 /tmp/ceph0d
+#
+# Build
+# sudo docker build -t ceph .
+#
+# Run
+# sudo docker run -h cephbox -i -v /tmp/ceph0d:/var/lib/ceph/osd/ceph-0 -v /tmp/ceph1d:/var/lib/ceph/osd/ceph-1 -p 6789:6789 -t ceph /bin/bash
+# ./bootstrap.sh
+#
 # NOTES:
 # Need to update docker config
 # vim /etc/init/docker.conf
